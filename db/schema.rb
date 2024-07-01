@@ -10,25 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_01_165602) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_01_195421) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.bigint "author_id", null: false
-    t.text "body"
+    t.text "body", null: false
     t.bigint "photo_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_comments_on_author_id"
     t.index ["photo_id"], name: "index_comments_on_photo_id"
   end
 
   create_table "follow_requests", force: :cascade do |t|
     t.bigint "recipient_id", null: false
     t.bigint "sender_id", null: false
-    t.string "status"
+    t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipient_id"], name: "index_follow_requests_on_recipient_id"
@@ -67,6 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_01_165602) do
     t.integer "comments_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "photos_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
