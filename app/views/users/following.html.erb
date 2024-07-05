@@ -1,0 +1,7 @@
+<%= render "users/user_navbar", user: current_user %>
+<h3>Following</h3>
+<ul class="list-group">
+  <% @user.leaders.each do |follower| %>
+  <li class="list-group-item"><a href="/<%=follower.username%>"><%= follower.username %></a></li>
+  <% end %>
+</ul>

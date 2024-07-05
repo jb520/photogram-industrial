@@ -1,10 +1,7 @@
 <%= render "users/user_navbar", user: current_user %>
-
-
-<h2>Own photos</h2>
-
+<h3>Feed</h3>
 <ul>
-  <% @user.own_photos.each do |photo| %>
+  <% @user.feed.each do |photo| %>
    <%= render "photos/photo", photo: photo %>
   <% end %>
 </ul>
