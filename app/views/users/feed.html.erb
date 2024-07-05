@@ -1,5 +1,5 @@
 <%= render "users/user_navbar", user: current_user %>
-
+<h3>Feed</h3>
 <ul>
   <% @user.feed.each do |photo| %>
    <%= render "photos/photo", photo: photo %>

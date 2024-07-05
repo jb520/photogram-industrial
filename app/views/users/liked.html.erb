@@ -1,5 +1,5 @@
 <%= render "users/user_navbar", user: current_user %>
-
+<h3>Liked Photos</h3>
 <% @user.liked_photos.each do |photo| %>
   <%= render "photos/photo", photo: photo %>
 <% end %>
